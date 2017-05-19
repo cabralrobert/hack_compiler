@@ -1,0 +1,35 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+A	src/main.cpp	/^    A() : count(16){}$/;"	f	class:A
+A	src/main.cpp	/^class A{$/;"	c	file:
+Arquivo	src/main.cpp	/^    Arquivo(string nomeIn, string nomeOut):$/;"	f	class:Arquivo
+Arquivo	src/main.cpp	/^class Arquivo{$/;"	c	file:
+BIN	makefile	/^BIN = bin$/;"	m
+C	src/main.cpp	/^    C(){$/;"	f	class:C
+C	src/main.cpp	/^class C{$/;"	c	file:
+GCC	makefile	/^GCC = g++$/;"	m
+count	src/main.cpp	/^    int count;$/;"	m	class:A	file:
+decoder	src/main.cpp	/^    void decoder(Arquivo &arquivo, string instruction){$/;"	f	class:A
+decoder	src/main.cpp	/^    void decoder(Arquivo &arquivo, string instruction){$/;"	f	class:C
+getLine	src/main.cpp	/^    string getLine(){$/;"	f	class:Arquivo
+isDigit	src/main.cpp	8;"	d	file:
+isEnd	src/main.cpp	/^    bool isEnd(){$/;"	f	class:Arquivo
+isTypeA	src/main.cpp	10;"	d	file:
+isTypeC	src/main.cpp	11;"	d	file:
+isTypeLabel	src/main.cpp	12;"	d	file:
+isValid	src/main.cpp	9;"	d	file:
+jmp	src/main.cpp	/^    map<string,int> jmp;$/;"	m	class:C	file:
+main	src/main.cpp	/^int main()$/;"	f
+myfile	src/main.cpp	/^    ifstream myfile;$/;"	m	class:Arquivo	file:
+outFile	src/main.cpp	/^    ofstream outFile;$/;"	m	class:Arquivo	file:
+rmComment	src/main.cpp	/^void rmComment(string &line){$/;"	f
+rmTab	src/main.cpp	/^void rmTab(string &line){$/;"	f
+setBit	src/main.cpp	13;"	d	file:
+values	src/main.cpp	/^    map<string,int> values;$/;"	m	class:C	file:
+variable	src/main.cpp	/^    map<string,int> variable;$/;"	m	class:C	file:
+variables	src/main.cpp	/^    map<string, int> variables;$/;"	m	class:A	file:
+writeLine	src/main.cpp	/^    void writeLine(int value){$/;"	f	class:Arquivo

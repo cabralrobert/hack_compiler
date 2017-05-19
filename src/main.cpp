@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -12,6 +13,20 @@ using namespace std;
 #define isTypeLabel(a) (a[0] == '(') ? true : false
 #define setBit(x,y) (x |= 1<<y)
 int pc = 0;
+
+//para linhas que tem o [tab]
+void rmTab(string &line){
+    while(line[0] == '\t')
+        line.erase(0,1);
+}
+
+void rmComment(string &line){
+    for(int i = 0; line[i] != '\0'; i++){
+        if(line[i] == '\t'){
+            line = line.substr(0,i);
+        }
+    }
+}
 
 class Arquivo{
 private:
@@ -63,16 +78,56 @@ public:
                     instruction.erase(i,i+1);
                 }
             }
-            cout << instruction << " " << pc << endl;
+            //cout << instruction << " " << pc << endl;
             variables[instruction] = pc;
         }
         else{
+            //abre outro arquivo, procura em todo o arquivo criado e se achar o instruction, pega o pc e escreve no arquivo antigo
             instruction.erase(0,1);
+
+            Arquivo auxArquivo("data/code.asm", "data/out.hack");
+            int pc1 = 0;
+
+            while(!auxArquivo.isEnd()){
+                string line = auxArquivo.getLine();
+                rmTab(line);
+
+                if(isValid(line)){
+                    rmComment(line);
+
+                    if(isTypeA(line)){
+                        pc1++;
+                    }
+                    else if(isTypeC(line)){
+                        pc1++;
+                    }
+                    else if(isTypeLabel(line)){
+                        for(int i = 0; line[i] != '\0'; i++){
+                            if(line[i] == '(' || line[i] == ')'){
+                                line.erase(i,i+1);
+                            }
+                        }
+
+                        if(line == instruction){
+                            if(pc1 >= pc){
+                                arquivo.writeLine(pc1);
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+            pc1 = 0;
+
             auto pos = variables.find(instruction);
             if(variables.find(instruction) == variables.end()){
-                variables[instruction] = count;
-                arquivo.writeLine(count);
-                count++;
+                if(instruction == "SCREEN"){
+                    arquivo.writeLine(0x4000);
+                }else{
+                    variables[instruction] = count;
+                    arquivo.writeLine(count);
+                    count++;
+                }
             }else
                 arquivo.writeLine(pos->second);
         }
@@ -161,6 +216,12 @@ public:
             arquivo.writeLine(value);
 
         }else if(instruction[1] == ';'){
+            while(instruction[2] == ' ')
+                instruction.erase(2,1);
+
+            cout << instruction << endl;
+
+            //instruction.sort();
             //Instruções Jump
             string pos1;
             pos1.push_back(instruction[0]);
@@ -178,19 +239,7 @@ public:
 
 };
 
-//para linhas que tem o [tab]
-void rmTab(string &line){
-    while(line[0] == '\t')
-        line.erase(0,1);
-}
-
-void rmComment(string &line){
-    for(int i = 0; line[i] != '\0'; i++){
-        if(line[i] == '\t' || line[i] == ' '){
-            line = line.substr(0,i);
-        }
-    }
-}
+//|| line[i] == ' '
 
 int main()
 {        
@@ -204,6 +253,9 @@ int main()
         rmTab(line);
 
         if(isValid(line)){
+            if(line == "\0"){
+                line = "0";
+            }
             rmComment(line);
 
             if(isTypeA(line)){

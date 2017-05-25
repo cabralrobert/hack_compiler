@@ -23,7 +23,7 @@ typeC: src/typeC.cpp
 	$(GCC) src/typeC.cpp -Iinc/ -c -o $(OBJ)/typeC.o
 
 folder:
-	mkdir -p $(OBJ) $(BIN)
+	mkdir -p $(OBJ) $(BIN) data
 
 clean:
 	rm -rf $(OBJ)/* $(BIN)/* $(OBJ) $(BIN)

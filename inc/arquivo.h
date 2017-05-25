@@ -19,6 +19,7 @@ class Arquivo{
 
 public:
     Arquivo(string nomeIn, string nomeOut);
+    bool isOpened();
     string getFileIn();
     string getFileOut();
     bool isEnd();

@@ -14,9 +14,9 @@
 using namespace std;
 
 #define isDigit(a) (a >= '0' && a <= '9' ? true : false)
-#define isValid(a) (a[0] == '@' || a[1] == '=' || a[1] == ';' || a[0] == '(') ? true : false
+#define isValid(a) (a[0] == '@' || a[1] == '=' || ((a.find(";") != std::string::npos) && (a.find("//") == std::string::npos)) || a[0] == '(') ? true : false
 #define isTypeA(a) (a[0] == '@' ? true : false)
-#define isTypeC(a) (a[1] == '=' || a[1] == ';' ? true : false)
+#define isTypeC(a) ((a.find(";") != std::string::npos) ? true : false)
 #define isTypeLabel(a) (a[0] == '(') ? true : false
 #define setBit(x,y) (x |= 1<<y)
 

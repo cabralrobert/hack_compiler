@@ -20,29 +20,34 @@ int main(int argc, char *argv[])
         A typeA;
         C typeC;
 
-        while(!arquivo.isEnd()){
+        if(arquivo.isOpened()){
 
-            rmTab(line);
+            while(!arquivo.isEnd()){
 
-            if(isValid(line)){
-                if(line == "\0"){
-                    line = "0";
-                }
-                rmComment(line);
+                rmTab(line);
 
-                if(isTypeA(line)){
-                    pc++;
-                    typeA.decoder(arquivo,line);
+                if(isValid(line)){
+                    if(line == "\0"){
+                        line = "0";
+                    }
+                    rmComment(line);
+
+                    if(isTypeA(line)){
+                        pc++;
+                        typeA.decoder(arquivo,line);
+                    }
+                    else if(isTypeC(line)){
+                        pc++;
+                        typeC.decoder(arquivo,line);
+                    }
+                    else if(isTypeLabel(line)){
+                        typeA.decoder(arquivo,line);
+                    }
                 }
-                else if(isTypeC(line)){
-                    pc++;
-                    typeC.decoder(arquivo,line);
-                }
-                else if(isTypeLabel(line)){
-                    typeA.decoder(arquivo,line);
-                }
+                line = arquivo.getLine();
             }
-            line = arquivo.getLine();
+        }else{
+            cout << "Digite um arquivo valido." << endl;
         }
     }
 

@@ -18,6 +18,12 @@ Arquivo::Arquivo(string nomeIn, string nomeOut):
     this->fileOut = nomeOut;
 }
 
+bool Arquivo::isOpened(){
+    if(myfile)
+        return true;
+    return false;
+}
+
 string Arquivo::getFileIn(){
     return this->fileIn;
 }

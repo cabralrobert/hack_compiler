@@ -11,6 +11,7 @@
 #include "arquivo.h"
 #include <map>
 #include "functions.h"
+#include <iostream>
 
 using namespace std;
 
@@ -90,21 +91,36 @@ void C::decoder(Arquivo &arquivo, string instruction){
 
         arquivo.writeLine(value);
 
-    }else if(instruction[1] == ';'){
-        while(instruction[2] == ' ')
-            instruction.erase(2,1);
+    }else if(instruction.find(";") != std::string::npos){
+        for(int i = 0; instruction[i] != '\0';i++){
+            if(instruction[i] == ' '){
+                instruction.erase(i,1);
+            }
+        }
 
-        //Instruções Jump
-        string pos1;
-        pos1.push_back(instruction[0]);
+        string aux = "";
+        for(int i = 0; instruction[i] != '\0'; i++){
+            if(instruction[i] == ';'){
+                aux = instruction.substr(0,i);
+                break;
+            }
+        }
 
-        if(values.find(pos1) != values.end())
-            value |= values.find(pos1)->second;
+        for(int i = 0; instruction[i] != '\0'; i++){
+            if(instruction[i] == ';'){
+                instruction.erase(i,1);
+                instruction = instruction.substr(i++,instruction.size());
+            }
+        }
 
-        instruction.erase(0,2);
+        if(values.find(aux) != values.end())
+            value |= values.find(aux)->second;
+
         if(jmp.find(instruction) != jmp.end())
             value |= jmp.find(instruction)->second;
 
         arquivo.writeLine(value);
+        cout << value << endl;
+
     }
 }

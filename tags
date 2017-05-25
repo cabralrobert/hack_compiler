@@ -4,32 +4,42 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-A	src/main.cpp	/^    A() : count(16){}$/;"	f	class:A
-A	src/main.cpp	/^class A{$/;"	c	file:
-Arquivo	src/main.cpp	/^    Arquivo(string nomeIn, string nomeOut):$/;"	f	class:Arquivo
-Arquivo	src/main.cpp	/^class Arquivo{$/;"	c	file:
+A	inc/typeA.h	/^class A{$/;"	c
+A	src/typeA.cpp	/^A::A() : count(16){}$/;"	f	class:A
+ARQUIVO_H_	inc/arquivo.h	11;"	d
+Arquivo	inc/arquivo.h	/^class Arquivo{$/;"	c
+Arquivo	src/arquivo.cpp	/^Arquivo::Arquivo(string nomeIn, string nomeOut):$/;"	f	class:Arquivo
 BIN	makefile	/^BIN = bin$/;"	m
-C	src/main.cpp	/^    C(){$/;"	f	class:C
-C	src/main.cpp	/^class C{$/;"	c	file:
+C	inc/typeC.h	/^class C{$/;"	c
+C	src/typeC.cpp	/^C::C(){$/;"	f	class:C
+FUNCTIONS_H	inc/functions.h	10;"	d
 GCC	makefile	/^GCC = g++$/;"	m
-count	src/main.cpp	/^    int count;$/;"	m	class:A	file:
-decoder	src/main.cpp	/^    void decoder(Arquivo &arquivo, string instruction){$/;"	f	class:A
-decoder	src/main.cpp	/^    void decoder(Arquivo &arquivo, string instruction){$/;"	f	class:C
-getLine	src/main.cpp	/^    string getLine(){$/;"	f	class:Arquivo
-isDigit	src/main.cpp	8;"	d	file:
-isEnd	src/main.cpp	/^    bool isEnd(){$/;"	f	class:Arquivo
-isTypeA	src/main.cpp	10;"	d	file:
-isTypeC	src/main.cpp	11;"	d	file:
-isTypeLabel	src/main.cpp	12;"	d	file:
-isValid	src/main.cpp	9;"	d	file:
-jmp	src/main.cpp	/^    map<string,int> jmp;$/;"	m	class:C	file:
-main	src/main.cpp	/^int main()$/;"	f
-myfile	src/main.cpp	/^    ifstream myfile;$/;"	m	class:Arquivo	file:
-outFile	src/main.cpp	/^    ofstream outFile;$/;"	m	class:Arquivo	file:
-rmComment	src/main.cpp	/^void rmComment(string &line){$/;"	f
-rmTab	src/main.cpp	/^void rmTab(string &line){$/;"	f
-setBit	src/main.cpp	13;"	d	file:
-values	src/main.cpp	/^    map<string,int> values;$/;"	m	class:C	file:
-variable	src/main.cpp	/^    map<string,int> variable;$/;"	m	class:C	file:
-variables	src/main.cpp	/^    map<string, int> variables;$/;"	m	class:A	file:
-writeLine	src/main.cpp	/^    void writeLine(int value){$/;"	f	class:Arquivo
+OBJ	makefile	/^OBJ = obj$/;"	m
+TYPEA_H_	inc/typeA.h	10;"	d
+TYPEC_H_	inc/typeC.h	11;"	d
+count	inc/typeA.h	/^    int count;$/;"	m	class:A
+decoder	src/typeA.cpp	/^void A::decoder(Arquivo &arquivo, string instruction){$/;"	f	class:A
+decoder	src/typeC.cpp	/^void C::decoder(Arquivo &arquivo, string instruction){$/;"	f	class:C
+fileIn	inc/arquivo.h	/^    string fileIn, fileOut;$/;"	m	class:Arquivo
+fileOut	inc/arquivo.h	/^    string fileIn, fileOut;$/;"	m	class:Arquivo
+getFileIn	src/arquivo.cpp	/^string Arquivo::getFileIn(){$/;"	f	class:Arquivo
+getFileOut	src/arquivo.cpp	/^string Arquivo::getFileOut(){$/;"	f	class:Arquivo
+getLine	src/arquivo.cpp	/^string Arquivo::getLine(){$/;"	f	class:Arquivo
+isDigit	inc/functions.h	16;"	d
+isEnd	src/arquivo.cpp	/^bool Arquivo::isEnd(){$/;"	f	class:Arquivo
+isTypeA	inc/functions.h	18;"	d
+isTypeC	inc/functions.h	19;"	d
+isTypeLabel	inc/functions.h	20;"	d
+isValid	inc/functions.h	17;"	d
+jmp	inc/typeC.h	/^    map<string,int> jmp;$/;"	m	class:C
+main	src/main.cpp	/^int main(int argc, char *argv[])$/;"	f
+myfile	inc/arquivo.h	/^    ifstream myfile;$/;"	m	class:Arquivo
+outFile	inc/arquivo.h	/^    ofstream outFile;$/;"	m	class:Arquivo
+pc	inc/functions.h	/^static int pc = 0;$/;"	v
+rmComment	src/functions.cpp	/^void rmComment(string &line){$/;"	f
+rmTab	src/functions.cpp	/^void rmTab(string &line){$/;"	f
+setBit	inc/functions.h	21;"	d
+values	inc/typeC.h	/^    map<string,int> values;$/;"	m	class:C
+variable	inc/typeC.h	/^    map<string,int> variable;$/;"	m	class:C
+variables	inc/typeA.h	/^    map<string, int> variables;$/;"	m	class:A
+writeLine	src/arquivo.cpp	/^void Arquivo::writeLine(int value){$/;"	f	class:Arquivo
